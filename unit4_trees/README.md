@@ -27,11 +27,11 @@ I built a binary search tree that stored smaller keys in the left subtree and la
 
 I inserted `[50, 30, 70, 20, 40, 60, 80]` and got `[20, 30, 40, 50, 60, 70, 80]` from traversal. Searches found `20` and `60` and returned `False` for `35` and `90`. The empty tree returned an empty traversal and a failed search. Inserting a second `50` left the traversal unchanged because the tree stored each key once.
 
-I used employee IDs as keys in a separate example. The BST stored the IDs, and a dictionary held the names for those IDs. I found the record for `1060` and reported a missing record for `1065`.
+For my real-world application, I modeled a save-state indexing system inspired by an emulator project I've been developing. Each save state was assigned a numerical ID, with the BST organizing those IDs and a dictionary storing the associated save information. The lookup for `1060` returned `Harbor, slot 2`, and the lookup for `1065` reported that no save state matched.
 
-I built two trees from the same seven employee IDs. I inserted the middle ID first in one tree and inserted the IDs in ascending order in the other. When I searched for `1090`, the balanced tree checked three nodes and the sequential tree checked seven.
+I built two trees from the same seven save-state IDs. I inserted the middle ID first, followed by the middle IDs of the left and right groups, to build a balanced tree. I inserted the same IDs in ascending order to build the second tree. Searching for `1090` checked three nodes with middle-first insertion, versus seven with sequential insertion.
 
-Search and insertion took time proportional to the tree height. They took O(log n) in a balanced tree and on average with a randomly ordered set of distinct keys. They could take O(n) in the worst case because sequential insertion formed a chain. In-order traversal took O(n) because it visited every node.
+The comparison showed that search and insertion took time proportional to the height of the tree. The balanced tree supported O(log n) search and insertion. Ascending save-state IDs formed a right-leaning chain, which made search and insertion O(n) in the worst case. A long enough chain could also reach Python's recursion limit and raise `RecursionError`. In-order traversal took O(n) because it visited every node.
 
 ## Run and sample output
 
@@ -63,15 +63,15 @@ Empty tree traversal: []
 Empty tree search for 50: False
 After inserting duplicate 50: [20, 30, 40, 50, 60, 70, 80]
 
-=== EMPLOYEE RECORD LOOKUP ===
-Employee IDs in order: [1001, 1025, 1035, 1050, 1060, 1075, 1090]
-Employee 1060: Sam
-Employee 1065: no matching record
+=== EMULATOR SAVE-STATE LOOKUP ===
+Save-state IDs in order: [1001, 1025, 1035, 1050, 1060, 1075, 1090]
+Save state 1060: Harbor, slot 2
+Save state 1065: no matching save state
 
 === INSERTION ORDER COMPARISON ===
 Middle-first insertion: [1050, 1025, 1075, 1001, 1035, 1060, 1090]
 Sequential insertion: [1001, 1025, 1035, 1050, 1060, 1075, 1090]
-Balanced search for 1090: 3 nodes visited [1050, 1075, 1090]
+Middle-first search for 1090: 3 nodes visited [1050, 1075, 1090]
 Sequential search for 1090: 7 nodes visited [1001, 1025, 1035, 1050, 1060, 1075, 1090]
 ```
 

@@ -201,38 +201,39 @@ def main():
     tree.insert(50)
     print(f"After inserting duplicate 50: {tree.inorder()}")
 
-    print("\n=== EMPLOYEE RECORD LOOKUP ===")
-    employees = {
-        1050: "Jordan",
-        1025: "Casey",
-        1075: "Riley",
-        1001: "Morgan",
-        1035: "Avery",
-        1060: "Sam",
-        1090: "Taylor",
+    print("\n=== EMULATOR SAVE-STATE LOOKUP ===")
+    # I modeled this index after an emulator project I've been developing.
+    save_states = {
+        1050: "Harbor, slot 1",
+        1025: "Forest, slot 1",
+        1075: "Tower, slot 1",
+        1001: "Village, slot 1",
+        1035: "Cave, slot 1",
+        1060: "Harbor, slot 2",
+        1090: "Tower, slot 2",
     }
-    employee_ids = BST()
+    middle_first_tree = BST()
     # Inserting the middle ID first puts lower and higher IDs on both sides.
-    for employee_id in employees:
-        employee_ids.insert(employee_id)
-    print(f"Employee IDs in order: {employee_ids.inorder()}")
-    for employee_id in (1060, 1065):
-        if employee_ids.search(employee_id):
-            print(f"Employee {employee_id}: {employees[employee_id]}")
+    for save_state_id in save_states:
+        middle_first_tree.insert(save_state_id)
+    print(f"Save-state IDs in order: {middle_first_tree.inorder()}")
+    for save_state_id in (1060, 1065):
+        if middle_first_tree.search(save_state_id):
+            print(f"Save state {save_state_id}: {save_states[save_state_id]}")
         else:
-            print(f"Employee {employee_id}: no matching record")
+            print(f"Save state {save_state_id}: no matching save state")
 
     print("\n=== INSERTION ORDER COMPARISON ===")
-    sequential_ids = BST()
-    sorted_ids = employee_ids.inorder()
-    for employee_id in sorted_ids:
-        sequential_ids.insert(employee_id)
+    sequential_tree = BST()
+    sorted_ids = middle_first_tree.inorder()
+    for save_state_id in sorted_ids:
+        sequential_tree.insert(save_state_id)
 
-    print(f"Middle-first insertion: {list(employees)}")
+    print(f"Middle-first insertion: {list(save_states)}")
     print(f"Sequential insertion: {sorted_ids}")
     # Both trees hold the same IDs, but ascending insertion makes a right chain.
     # Use the same search target and count the nodes checked in each tree.
-    for label, id_tree in (("Balanced", employee_ids), ("Sequential", sequential_ids)):
+    for label, id_tree in (("Middle-first", middle_first_tree), ("Sequential", sequential_tree)):
         visited = []
         id_tree.search(1090, visited)
         print(f"{label} search for 1090: {len(visited)} nodes visited {visited}")
