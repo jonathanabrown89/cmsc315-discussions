@@ -84,3 +84,11 @@ Your reflection should be approximately 150–200 words and address the followin
 1. What concepts or skills did you learn while completing this assignment?
 2. What challenges did you encounter, and how did you overcome them?
 3. Explain BST behavior and compare to how ordering works to create efficiency as compared to other data structures.
+
+For Unit 4, I built a binary search tree in Python using recursive insertion, searching, and in-order traversal. Each node stored a numerical value, with smaller values going left and larger values going right. I also handled duplicate values and verified that in-order traversal returned the values in ascending order.
+
+For my real-world application, I modeled a save-state indexing system inspired by an emulator project I've been developing. Each save state was assigned a numerical ID, with the BST organizing those IDs and a dictionary storing the associated save information. I tested successful lookups, missing IDs, and empty-tree operations.
+
+One thing I found interesting was how much insertion order affected performance. I built two trees containing the same seven IDs and searched for 1090. The tree built using a middle-first insertion order checked three nodes, while the tree built sequentially checked all seven.
+
+This demonstrated why BSTs can be more efficient than searching through an unsorted list. A balanced BST can achieve O(log n) search complexity, but a regular BST doesn't balance itself. Since save states are often created sequentially, inserting their IDs in order could eventually turn the tree into something resembling a linked list, increasing search complexity to O(n).
