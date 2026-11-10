@@ -14,7 +14,7 @@ key concepts in your own words using comments and output.
 
 class Node:
     def __init__(self, value):
-        # TODO (Student):
+        # TODO (JAB):
         # Store the node's value and initialize references
         # to the left and right child nodes.
         self.value = value
@@ -24,13 +24,13 @@ class Node:
 
 class BST:
     def __init__(self):
-        # TODO (Student):
+        # TODO (JAB):
         # Initialize an empty Binary Search Tree.
         self.root = None
 
     def insert(self, value):
         """
-        TODO (Student):
+        TODO (JAB):
         Insert a value into the BST.
 
         Requirements:
@@ -43,7 +43,7 @@ class BST:
 
     def _insert_recursive(self, node, value):
         """
-        TODO (Student):
+        TODO (JAB):
         Implement recursive BST insertion.
 
         Requirements:
@@ -65,7 +65,7 @@ class BST:
 
     def search(self, value, visited=None):
         """
-        TODO (Student):
+        TODO (JAB):
         Search for a value in the BST.
 
         Requirements:
@@ -78,7 +78,7 @@ class BST:
 
     def _search_recursive(self, node, value, visited=None):
         """
-        TODO (Student):
+        TODO (JAB):
         Implement recursive BST search.
         """
         if node is None:
@@ -97,7 +97,7 @@ class BST:
 
     def inorder(self):
         """
-        TODO (Student):
+        TODO (JAB):
         Return a list containing the values from an
         in-order traversal.
         """
@@ -107,7 +107,7 @@ class BST:
 
     def _inorder_recursive(self, node, values):
         """
-        TODO (Student):
+        TODO (JAB):
         Implement in-order traversal.
 
         Requirements:
@@ -130,7 +130,7 @@ def main():
     print("=== UNIT 4: BINARY SEARCH TREES ===")
 
     # ===============================
-    # TODO (Student): BUILD A TREE
+    # TODO (JAB): BUILD A TREE
     # ===============================
     #
     # Requirements:
@@ -149,7 +149,7 @@ def main():
     print(f"Insertion order: {values}")
 
     # ===============================
-    # TODO (Student): IN-ORDER TRAVERSAL
+    # TODO (JAB): IN-ORDER TRAVERSAL
     # ===============================
     #
     # Requirements:
@@ -162,7 +162,7 @@ def main():
     print(f"Sorted values: {tree.inorder()}")
 
     # ===============================
-    # TODO (Student): SEARCH TESTS
+    # TODO (JAB): SEARCH TESTS
     # ===============================
     #
     # Requirements:
@@ -178,7 +178,7 @@ def main():
         print(f"Search for {value}: {result}")
 
     # ===============================
-    # TODO (Student): EDGE CASES
+    # TODO (JAB): EDGE CASES
     # ===============================
     #
     # Demonstrate at least one edge case.
