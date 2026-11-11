@@ -85,10 +85,10 @@ Your reflection should be approximately 150–200 words and address the followin
 2. What challenges did you encounter, and how did you overcome them?
 3. Explain BST behavior and compare to how ordering works to create efficiency as compared to other data structures.
 
-For Unit 4, I built a binary search tree in Python using recursive insertion, searching, and in-order traversal. Each node stored a numerical value, with smaller values going left and larger values going right. I also handled duplicate values and verified that in-order traversal returned the values in ascending order.
+For Unit 4, I built a binary search tree in Python using recursive insertion, searching, and in-order traversal. Smaller values went left, larger values went right, and in-order traversal returned values in ascending order. I tested empty trees, missing keys, and duplicates to verify the implementation.
 
-For my real-world application, I modeled a save-state indexing system inspired by an emulator project I've been developing. Each save state was assigned a numerical ID, with the BST organizing those IDs and a dictionary storing the associated save information. I tested successful lookups, missing IDs, and empty-tree operations.
+For the real-world application, I modeled save-state indexing for an emulator project I've been developing. The BST organized numerical save-state IDs, while a dictionary stored the associated information.
 
-One thing I found interesting was how much insertion order affected performance. I built two trees containing the same seven IDs and searched for 1090. The tree built using a middle-first insertion order checked three nodes, while the tree built sequentially checked all seven.
+One challenge I explored was how insertion order affected the tree's structure and efficiency. Both trees held the same seven IDs and found the same save state, but their search paths differed. I compared middle-first insertion against sequential insertion and counted the nodes visited when searching for 1090. The balanced tree checked three nodes; the sequential tree checked seven.
 
-This demonstrated why BSTs can be more efficient than searching through an unsorted list. A balanced BST can achieve O(log n) search complexity, but a regular BST doesn't balance itself. Since save states are often created sequentially, inserting their IDs in order could eventually turn the tree into something resembling a linked list, increasing search complexity to O(n).
+This demonstrated why a balanced BST can search in O(log n) time rather than the O(n) time needed for a linear search through an unsorted list. Sequential insertion can create a chain, increasing BST search time to O(n). Since save-state IDs may be generated sequentially, I would consider a self-balancing tree for a larger indexing system.
